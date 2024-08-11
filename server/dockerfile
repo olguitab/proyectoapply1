@@ -1,0 +1,23 @@
+# Establece la imagen base
+FROM node:14
+
+# Crea el directorio de la aplicación
+WORKDIR /usr/src/app
+
+# Instala las dependencias de la aplicación
+# Un asterisco es utilizado para asegurarse de que tanto package.json como package-lock.json sean copiados
+# donde están disponibles (npm@5+)
+COPY package*.json ./
+
+RUN npm install
+# Si estás construyendo tu código para producción
+# RUN npm ci --only=production
+
+# Agrupa el código fuente de la aplicación
+COPY . .
+
+# Expone el puerto que tu app usará
+EXPOSE 3000
+
+# Comando para correr la app
+CMD ["npm", "run", "start:prod"]
