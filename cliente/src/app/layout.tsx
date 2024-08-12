@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
 
-const links = []
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -28,18 +27,7 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <header>
-    
-        <nav>
-          <ul>
-            {links.map(({label,route})=>(
-              <li key={route}>
-                <Link href={route}>
-                {label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
+
         
         {children}
         </header>
